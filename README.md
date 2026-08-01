@@ -1,9 +1,11 @@
-# TType
+# TouchType
 
 A browser typing tutor that takes a complete beginner from the home row to full
 sentences. No build step, no dependencies, no network — just open it.
 
 ## Running it
+
+https://github.com/carleclan/TypingTutor.git
 
 Double-click `index.html`.
 
