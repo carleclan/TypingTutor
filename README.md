@@ -7,6 +7,9 @@ sentences. No build step, no dependencies, no network — just open it.
 
 https://github.com/carleclan/TypingTutor.git
 
+<img width="1887" height="1714" alt="image" src="https://github.com/user-attachments/assets/019494ee-d263-470f-bd3e-3c8974c6f029" />
+
+
 Double-click `index.html`.
 
 If your browser blocks local storage on `file://` (progress won't stick between
