@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TType — Learn to Touch Type</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand" id="brandHome" role="button" tabindex="0">
+    <span class="logo">⌨</span>
+    <span class="brand-name">TType</span>
+  </div>
+  <div class="topbar-actions">
+    <button class="icon-btn" id="themeBtn" title="Toggle theme">◐</button>
+    <button class="icon-btn" id="settingsBtn" title="Settings">⚙</button>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ HOME ============ -->
+<section id="screen-home" class="screen active">
+
+  <div class="hero">
+    <h1>Learn to touch type</h1>
+    <p>Twenty lessons, from the home row to full sentences. Keep your eyes on the screen, not your hands.</p>
+  </div>
+
+  <div class="stat-strip">
+    <div class="stat-card"><div class="stat-value" id="statLessons">0</div><div class="stat-label">Lessons done</div></div>
+    <div class="stat-card"><div class="stat-value" id="statWpm">—</div><div class="stat-label">Best WPM</div></div>
+    <div class="stat-card"><div class="stat-value" id="statAcc">—</div><div class="stat-label">Avg accuracy</div></div>
+    <div class="stat-card"><div class="stat-value" id="statTime">0m</div><div class="stat-label">Time practiced</div></div>
+  </div>
+
+  <div id="resumeBar" class="resume-bar hidden">
+    <div>
+      <div class="resume-label">Pick up where you left off</div>
+      <div class="resume-title" id="resumeTitle"></div>
+    </div>
+    <button class="btn btn-primary" id="resumeBtn">Continue</button>
+  </div>
+
+  <h2 class="section-title">Lessons</h2>
+  <div class="lesson-grid" id="lessonGrid"></div>
+
+  <h2 class="section-title">Free practice</h2>
+  <div class="practice-row">
+    <button class="practice-card" data-practice="words">
+      <span class="practice-icon">✦</span>
+      <span class="practice-name">Common words</span>
+      <span class="practice-desc">Everyday vocabulary, mixed length</span>
+    </button>
+    <button class="practice-card" data-practice="sentences">
+      <span class="practice-icon">❝</span>
+      <span class="practice-name">Sentences</span>
+      <span class="practice-desc">Full lines with caps and punctuation</span>
+    </button>
+    <button class="practice-card" data-practice="weak">
+      <span class="practice-icon">◎</span>
+      <span class="practice-name">Trouble keys</span>
+      <span class="practice-desc" id="weakDesc">Drills built from your mistakes</span>
+    </button>
+  </div>
+
+  <div class="history-block" id="historyBlock">
+    <h2 class="section-title">Recent sessions</h2>
+    <div class="chart-wrap"><canvas id="historyChart" width="900" height="180"></canvas></div>
+    <p class="chart-caption">Words per minute over your last sessions</p>
+  </div>
+
+</section>
+
+<!-- ============ SESSION ============ -->
+<section id="screen-session" class="screen">
+
+  <div class="session-head">
+    <button class="btn btn-ghost" id="quitBtn">← Back</button>
+    <div class="session-title">
+      <h2 id="sessionTitle">Lesson</h2>
+      <p id="sessionSubtitle"></p>
+    </div>
+    <button class="btn btn-ghost" id="restartBtn">↻ Restart</button>
+  </div>
+
+  <div class="live-stats">
+    <div class="live-stat"><span class="live-value" id="liveWpm">0</span><span class="live-label">wpm</span></div>
+    <div class="live-stat"><span class="live-value" id="liveAcc">100%</span><span class="live-label">accuracy</span></div>
+    <div class="live-stat"><span class="live-value" id="liveTime">0:00</span><span class="live-label">time</span></div>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  </div>
+
+  <div class="typing-panel">
+    <div class="typing-text" id="typingText" tabindex="0"></div>
+    <div class="typing-hint" id="typingHint">Place your fingers on the home row and start typing</div>
+  </div>
+
+  <div class="guide" id="guideArea">
+    <div class="finger-guide">
+      <div class="hands">
+        <div class="hand hand-left">
+          <div class="finger" data-finger="pinkyL"></div>
+          <div class="finger" data-finger="ringL"></div>
+          <div class="finger" data-finger="middleL"></div>
+          <div class="finger" data-finger="indexL"></div>
+          <div class="thumb" data-finger="thumb"></div>
+        </div>
+        <div class="hand hand-right">
+          <div class="thumb" data-finger="thumb"></div>
+          <div class="finger" data-finger="indexR"></div>
+          <div class="finger" data-finger="middleR"></div>
+          <div class="finger" data-finger="ringR"></div>
+          <div class="finger" data-finger="pinkyR"></div>
+        </div>
+      </div>
+      <div class="finger-name" id="fingerName">—</div>
+    </div>
+    <div class="keyboard" id="keyboard"></div>
+  </div>
+
+</section>
+
+<!-- ============ RESULTS ============ -->
+<section id="screen-results" class="screen">
+  <div class="results-card">
+    <div class="stars" id="resultStars"></div>
+    <h2 id="resultHeadline">Nice work</h2>
+    <p class="results-sub" id="resultSub"></p>
+
+    <div class="result-grid">
+      <div class="result-stat"><div class="result-value" id="resWpm">0</div><div class="result-label">WPM</div></div>
+      <div class="result-stat"><div class="result-value" id="resAcc">0%</div><div class="result-label">Accuracy</div></div>
+      <div class="result-stat"><div class="result-value" id="resTime">0:00</div><div class="result-label">Time</div></div>
+      <div class="result-stat"><div class="result-value" id="resErrors">0</div><div class="result-label">Mistakes</div></div>
+    </div>
+
+    <div class="trouble" id="troubleBlock">
+      <div class="trouble-label">Keys to work on</div>
+      <div class="trouble-keys" id="troubleKeys"></div>
+    </div>
+
+    <div class="results-actions">
+      <button class="btn btn-ghost" id="resHomeBtn">Home</button>
+      <button class="btn btn-ghost" id="resRetryBtn">Try again</button>
+      <button class="btn btn-primary" id="resNextBtn">Next lesson →</button>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ SETTINGS ============ -->
+<div class="modal-backdrop hidden" id="settingsModal">
+  <div class="modal">
+    <h3>Settings</h3>
+
+    <label class="setting">
+      <div>
+        <div class="setting-name">Strict mode</div>
+        <div class="setting-desc">Block on a wrong key until you hit the right one</div>
+      </div>
+      <input type="checkbox" id="setStrict">
+    </label>
+
+    <label class="setting">
+      <div>
+        <div class="setting-name">Show keyboard</div>
+        <div class="setting-desc">Highlight the next key and finger to use</div>
+      </div>
+      <input type="checkbox" id="setKeyboard">
+    </label>
+
+    <label class="setting">
+      <div>
+        <div class="setting-name">Error sound</div>
+        <div class="setting-desc">A short tick when you mistype</div>
+      </div>
+      <input type="checkbox" id="setSound">
+    </label>
+
+    <label class="setting">
+      <div>
+        <div class="setting-name">Unlock all lessons</div>
+        <div class="setting-desc">Skip ahead instead of unlocking in order</div>
+      </div>
+      <input type="checkbox" id="setUnlock">
+    </label>
+
+    <div class="modal-actions">
+      <button class="btn btn-danger-ghost" id="resetBtn">Reset all progress</button>
+      <button class="btn btn-primary" id="closeSettings">Done</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/content.js"></script>
+<script src="js/keyboard.js"></script>
+<script src="js/lessons.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

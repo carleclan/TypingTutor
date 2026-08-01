@@ -1,0 +1,9 @@
+# editor / OS noise
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+*.swp
+
+# local Claude Code config
+.claude/
