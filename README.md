@@ -19,6 +19,8 @@ visits), serve the folder instead and open <http://localhost:8123>:
 powershell -ExecutionPolicy Bypass -File serve.ps1
 ```
 
+
+
 ## How the course works
 
 Twenty lessons, each introducing at most two new keys, in the order a touch
